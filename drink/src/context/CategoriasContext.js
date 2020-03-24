@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect} from 'react';
 import axios from 'axios';
 
 //Crear el Context
-export const CategoriaContext =createContext();
+export const CategoriasContext =createContext();
 
 //Provider es donde se encuentran las funciones y state
 const CategoriasProvider = (props) => {
@@ -23,13 +23,13 @@ const CategoriasProvider = (props) => {
     }, [])
 
     return (
-        <CategoriaContext.Provider
+        <CategoriasContext.Provider
             value = {{
-
+                categorias
             }}
         >
             {props.children}
-        </CategoriaContext.Provider>
+        </CategoriasContext.Provider>
     )
 }
 
