@@ -1,14 +1,33 @@
-import React, { useContext } from 'react';
-import { CategoriaContext } from '../context/CategoriasContext';
+import React, { useContext, useState } from 'react';
+import { CategoriasContext } from '../context/CategoriasContext';
+import { RecetasContext} from '../context/RecetasContext';
+
 const Formulario = () => {
 
-    const { categorias } = useContext(CategoriaContext);
+    const [ busqueda, guardarBusqueda ] = useState({
+        nombre: '',
+        categoria: ''
+    });
 
-    console.log(categorias);
+    const { categorias } = useContext(CategoriasContext);
+    const { buscarRecetas, guardarConsultar} = useContext(RecetasContext);
+
+    //Funcion para leer los resultados
+    const obtenerDatosReceta = e => {
+        guardarBusqueda({
+            ...busqueda,
+            [e.target.name] : e.target.value
+        })
+    }
     
     return (
         <form
             className = "col-12"
+            onSubmit = { e => {
+                e.preventDefault();
+                buscarRecetas(busqueda)
+                guardarConsultar(true);
+            }}
         >
             <fieldset className = "text-center">
                 <legend>Busca bebidad por Categoria o por Ingediente</legend>
@@ -21,6 +40,7 @@ const Formulario = () => {
                         className = "form-control"
                         type = "text"
                         placeholder = "Buscar por Ingrediente"
+                        onChange = {obtenerDatosReceta}
                     />
                 </div>
 
@@ -28,10 +48,15 @@ const Formulario = () => {
                     <select
                         className = "form-control"
                         name = "categoria"
+                        onChange = {obtenerDatosReceta}
                     >
                         <option value = "">--Selecciona Categoria</option>
-                        <option value = "">--Selecciona Categoria</option>
-                        <option value = "">--Selecciona Categoria</option>
+                        {categorias.map(categoria => (
+                            <option
+                                key = {categoria.strCategory}
+                                value = {categoria.strCategory}
+                            >{categoria.strCategory}</option>
+                        ))}
 
                     </select>
                 </div>
