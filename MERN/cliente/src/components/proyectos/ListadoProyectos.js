@@ -13,6 +13,7 @@ const ListadoProyectos = () => {
         useEffect(() => {
             obtenerProyectos();
             
+            // eslint-disable-next-line
         }, [])
 
         //Revisar si proyectos tiene contenido
