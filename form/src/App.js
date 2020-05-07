@@ -1,13 +1,19 @@
 import React from 'react';
 import Nav from './component/Nav';
-import PersonalForm from './component/PersonalForm';
+import Stepperview from './component/Stepperview';
+
 
 function App() {
   return (
-    <div>
-      <Nav/>
-      <PersonalForm/>
-    </div>
+    <>
+ 
+     
+        <Nav/>
+      <Stepperview/>
+
+      
+ 
+    </>
   );
 }
 
