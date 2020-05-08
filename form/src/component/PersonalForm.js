@@ -41,22 +41,35 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 
-const PersonalForm = () => {
+const PersonalForm = ({ handleDataChange, data, handleSexoChange, sexo, handleBirthdateChange, birthdate }) => {
     const classes = useStyles();
 
-    const [birthdate, setBirthdate] = useState(new Date());
+    
   
-    const handleDateChange = date => {
-        setBirthdate(date);
-      
-    };
 
-    const [sex, setSex] = useState('');
 
-    const handleChange = (event) => {
-      setSex(event.target.value);
-    };
-  
+    // const [ personalInfo, setPersonalInfo ] = useState({
+    //     nombre: '',
+    //     apellido: '',
+    //     telefonofijo: '',
+    //     telefonomovil: '',
+    //     email: '',
+    //     nacionalidad: '',
+    //     sexo: '',
+    //     ciudad: '',
+    //     pais: '',
+    //     callenumero: '',
+    //     barrio: ''
+
+    // });
+
+    // const handleChangePersonalInfo = (event) => {
+    //     event.preventDefault();
+    //     setPersonalInfo({
+    //         ...personalInfo,
+    //         [event.target.name]: event.target.value
+    //     });
+    // };
 
     return ( 
 
@@ -67,11 +80,11 @@ const PersonalForm = () => {
                         <label className={classes.title}>Datos Personales</label>
                         <Paper className={classes.paper}>
                             <Container>
-                                <TextField id="nombre" className={classes.field} label="Nombre*" color="secondary" />
-                                <TextField id="apellido" className={classes.field} label="Apellido*" color="secondary" />
-                                <TextField id="telefono-fijo" className={classes.field} label="Teléfono fijo" color="secondary" />
-                                <TextField id="telefono-movil" className={classes.field} label="Teléfono Movil*" color="secondary" />
-                                <TextField id="email" className={classes.field} label="Email*" color="secondary" />
+                                <TextField id="nombre" className={classes.field} label="Nombre*" color="secondary" name="nombre" value={data.nombre} onChange={handleDataChange}/>
+                                <TextField id="apellido" className={classes.field} label="Apellido*" color="secondary" name="apellido" value={data.apellido} onChange={handleDataChange}/>
+                                <TextField id="telefono-fijo" className={classes.field} label="Teléfono fijo" color="secondary" name="telefonofijo" value={data.telefonofijo} onChange={handleDataChange} />
+                                <TextField id="telefono-movil" className={classes.field} label="Teléfono Movil*" color="secondary" name="telefonomovil" value={data.telefonomovil} onChange={handleDataChange}/>
+                                <TextField id="email" className={classes.field} label="Email*" color="secondary" name="email" value={data.email} onChange={handleDataChange}/>
                                 
                                 <hr/>
 
@@ -83,34 +96,34 @@ const PersonalForm = () => {
                                         label="Fecha de nacimiento"
                                         format="MM/dd/yyyy"
                                         value={birthdate}
-                                        onChange={handleDateChange}
+                                        onChange={handleBirthdateChange}
                                         KeyboardButtonProps={{
                                             'aria-label': 'change date',
                                         }}
                                         />
                                 </MuiPickersUtilsProvider>
 
-                                <TextField id="nacionalidad" className={classes.field} label="Nacionalidad*" color="secondary" />
+                                <TextField id="nacionalidad" className={classes.field} label="Nacionalidad*" color="secondary" name="nacionalidad" value={data.nacionalidad} onChange={handleDataChange}/>
                                 
                                 <FormControl className={classes.formControl}>
                                     <InputLabel id="demo-simple-select-label">Sexo</InputLabel>
                                     <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    value={sex}
-                                    onChange={handleChange}
+                                    value={sexo}
+                                    onChange={handleSexoChange}
                                     >
-                                    <MenuItem value={"femenino"}>Femenino</MenuItem>
+                                    <MenuItem value={'femenino'}>Femenino</MenuItem>
                                     <MenuItem value={"masculino"}>Masculino</MenuItem>
                                     <MenuItem value={"otro"}>Otro</MenuItem>
                                     </Select>
                                 </FormControl>
                                 <hr/>
 
-                                <TextField id="ciudad" className={classes.field} label="Ciudad*" color="secondary" />
-                                <TextField id="pais" className={classes.field} label="País*" color="secondary" />
-                                <TextField id="calle-numero" className={classes.field} label="Calle/Número*" color="secondary" />
-                                <TextField id="barrio" className={classes.field} label="Barrio*" color="secondary" />
+                                <TextField id="ciudad" className={classes.field} label="Ciudad*" color="secondary" name="ciudad" value={data.ciudad} onChange={handleDataChange}/>
+                                <TextField id="pais" className={classes.field} label="País*" color="secondary" name="pais" value={data.pais} onChange={handleDataChange}/>
+                                <TextField id="calle-numero" className={classes.field} label="Calle/Número*" color="secondary" name="callenumero" value={data.callenumero} onChange={handleDataChange}/>
+                                <TextField id="barrio" className={classes.field} label="Barrio*" color="secondary" name="barrio" value={data.barrio} onChange={handleDataChange}/>
 
                             </Container>
                         </Paper>

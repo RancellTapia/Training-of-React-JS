@@ -22,7 +22,6 @@ import {
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
-    //   marginTop: 90,
     },
     paper: {
       padding: theme.spacing(3),
@@ -56,49 +55,80 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const JobForm = () => {
+const JobForm = ({ handleDataChange, 
+                    data,
+                    startdate1,
+                    startdate2,
+                    startdate3,
+                    finishdate1,
+                    finishdate2,
+                    finishdate3,
+                    handleStartDate1,
+                    handleStartDate2,
+                    handleStartDate3,
+                    handleFinishDate1,
+                    handleFinishDate2,
+                    handleFinishDate3
+                 }) => {
     const classes = useStyles();
 
-    const [startdate1, setStartdate1] = useState(new Date());
-    const [startdate2, setStartdate2] = useState(new Date());
-    const [startdate3, setStartdate3] = useState(new Date());
+    // const [ startdate1, setStartdate1 ] = useState(new Date());
+    // const [ startdate2, setStartdate2 ] = useState(new Date());
+    // const [ startdate3, setStartdate3 ] = useState(new Date());
 
-    const [finishdate1, setFinishdate1] = useState(new Date());
-    const [finishdate2, setFinishdate2] = useState(new Date());
-    const [finishdate3, setFinishdate3] = useState(new Date());
+    // const [ finishdate1, setFinishdate1 ] = useState(new Date());
+    // const [ finishdate2, setFinishdate2 ] = useState(new Date());
+    // const [ finishdate3, setFinishdate3 ] = useState(new Date());
+
+    // const [ jobInfo, setJobInfo ] = useState({
+    //     level: '',
+    //     titulo: '',
+    //     habilidad1: '',
+    //     habilidad2: '',
+    //     habilidad3: '',
+    //     habilidad4: '',
+    //     habilidad5: '',
+    //     puesto1: '',
+    //     empresa1: '',
+    //     puesto2: '',
+    //     empresa2: '',
+    //     puesto3: '',
+    //     empresa3: ''
+
+    // });
   
-    const handleStartDate1 = date => {
-        setStartdate1(date);
-    };
+    // const handleStartDate1 = date => {
+    //     setStartdate1(date);
+    // };
 
-    const handleStartDate2 = date => {
-        setStartdate2(date);
-    };
+    // const handleStartDate2 = date => {
+    //     setStartdate2(date);
+    // };
 
-    const handleStartDate3 = date => {
-        setStartdate3(date);
-    };
+    // const handleStartDate3 = date => {
+    //     setStartdate3(date);
+    // };
 
-    const handleFinishDate1 = date => {
-        setFinishdate1(date);
-    };
+    // const handleFinishDate1 = date => {
+    //     setFinishdate1(date);
+    // };
 
-    const handleFinishDate2 = date => {
-        setFinishdate2(date);
-    };
+    // const handleFinishDate2 = date => {
+    //     setFinishdate2(date);
+    // };
 
-    const handleFinishDate3 = date => {
-        setFinishdate3(date);
-    };
+    // const handleFinishDate3 = date => {
+    //     setFinishdate3(date);
+    // };
 
-    // const [sex, setSex] = useState('');
-    // console.log(sex);
-
-    // const handleChange = (event) => {
-    //   setSex(event.target.value);
+    // const handleChangeJobInfo = (event) => {
+    //     event.preventDefault();
+    //     setJobInfo({
+    //         ...jobInfo,
+    //         [event.target.name]: event.target.value
+    //     });
     // };
   
-
     return ( 
 
         <Container>
@@ -114,30 +144,31 @@ const JobForm = () => {
                                     <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    // value={}
-                                    // onChange={handleChange}
+                                    name="level"
+                                    value={data.level}
+                                    onChange={handleDataChange}
                                     >
-                                    <MenuItem value={10}>Básico</MenuItem>
-                                    <MenuItem value={20}>Bachiller</MenuItem>
-                                    <MenuItem value={30}>Técnico</MenuItem>
-                                    <MenuItem value={10}>Tecnólogo</MenuItem>
-                                    <MenuItem value={20}>Universitario</MenuItem>
-                                    <MenuItem value={30}>Master</MenuItem>
+                                    <MenuItem value={'basico'}>Básico</MenuItem>
+                                    <MenuItem value={'bachiller'}>Bachiller</MenuItem>
+                                    <MenuItem value={'tecnico'}>Técnico</MenuItem>
+                                    <MenuItem value={'tecnologo'}>Tecnólogo</MenuItem>
+                                    <MenuItem value={'universitario'}>Universitario</MenuItem>
+                                    <MenuItem value={'master'}>Master</MenuItem>
                                     </Select>
                                 </FormControl>
 
-                                <TextField id="titulo" className={classes.field} label="Título" color="secondary" />
+                                <TextField id="titulo" className={classes.field} label="Título" color="secondary" name="titulo" value={data.titulo} onChange={handleDataChange}/>
                                 <br/>
-                                <TextField id="habilidad1" className={classes.field} label="Habilidad 1" color="secondary" />
-                                <TextField id="habilidad2" className={classes.field} label="Habilidad 2" color="secondary" />
-                                <TextField id="habilidad3" className={classes.field} label="Habilidad 3" color="secondary" />
-                                <TextField id="habilidad4" className={classes.field} label="Habilidad 4" color="secondary" />
-                                <TextField id="habilidad5" className={classes.field} label="Habilidad 5" color="secondary" />
+                                <TextField id="habilidad1" className={classes.field} label="Habilidad 1" color="secondary" name="habilidad1" value={data.habilidad1} onChange={handleDataChange}/>
+                                <TextField id="habilidad2" className={classes.field} label="Habilidad 2" color="secondary" name="habilidad2" value={data.habilidad2} onChange={handleDataChange}/>
+                                <TextField id="habilidad3" className={classes.field} label="Habilidad 3" color="secondary" name="habilidad3" value={data.habilidad3} onChange={handleDataChange}/>
+                                <TextField id="habilidad4" className={classes.field} label="Habilidad 4" color="secondary" name="habilidad4" value={data.habilidad4} onChange={handleDataChange}/>
+                                <TextField id="habilidad5" className={classes.field} label="Habilidad 5" color="secondary" name="habilidad5" value={data.habilidad5} onChange={handleDataChange}/>
 
                                 <hr/>
 
-                                <TextField id="puesto1" className={classes.field} label="Puesto 1" color="secondary" />
-                                <TextField id="empresa1" className={classes.field} label="Empresa" color="secondary" />
+                                <TextField id="puesto1" className={classes.field} label="Puesto 1" color="secondary" name="puesto1" value={data.puesto1} onChange={handleDataChange}/>
+                                <TextField id="empresa1" className={classes.field} label="Empresa" color="secondary" name="empresa1" value={data.empresa1} onChange={handleDataChange}/>
 
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                         <KeyboardDatePicker
@@ -171,8 +202,8 @@ const JobForm = () => {
 
                                 <hr/>
 
-                                <TextField id="puesto2" className={classes.field} label="Puesto 2" color="secondary" />
-                                <TextField id="empresa2" className={classes.field} label="Empresa" color="secondary" />
+                                <TextField id="puesto2" className={classes.field} label="Puesto 2" color="secondary" name="puesto2" value={data.puesto2} onChange={handleDataChange}/>
+                                <TextField id="empresa2" className={classes.field} label="Empresa" color="secondary" name="empresa2" value={data.empresa2} onChange={handleDataChange}/>
 
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                         <KeyboardDatePicker
@@ -206,8 +237,8 @@ const JobForm = () => {
 
                                 <hr/>
 
-                                <TextField id="puesto3" className={classes.field} label="Puesto 3" color="secondary" />
-                                <TextField id="empresa3" className={classes.field} label="Empresa" color="secondary" />
+                                <TextField id="puesto3" className={classes.field} label="Puesto 3" color="secondary" name="puesto3" value={data.puesto3} onChange={handleDataChange}/>
+                                <TextField id="empresa3" className={classes.field} label="Empresa" color="secondary" name="empresa3" value={data.empresa3} onChange={handleDataChange}/>
 
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                         <KeyboardDatePicker
