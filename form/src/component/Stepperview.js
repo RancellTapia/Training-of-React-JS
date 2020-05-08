@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PersonalForm from './PersonalForm';
 import JobForm from './JobForm';
 import RDTrabaja from './RDTrabaja';
@@ -37,24 +37,55 @@ function getSteps() {
     return['', '', ''];
   }
   
-  function getStepContent(step) {
-    switch (step) {
-      case 0:
-        return <RDTrabaja/>;
-      case 1:
-        return <PersonalForm/>;
-      case 2:
-        return <JobForm/>;
-      default:
-        return 'Unknown step';
-    }
-  }
+
 
 const Stepperview = () => {
 
     const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(0);
+    const [activeStep, setActiveStep] = useState(0);
     const steps = getSteps();
+    const [sexo, setSexo] = useState('');
+    const [birthdate, setBirthdate] = useState(new Date());
+
+    const [ startdate1, setStartdate1 ] = useState(new Date());
+    const [ startdate2, setStartdate2 ] = useState(new Date());
+    const [ startdate3, setStartdate3 ] = useState(new Date());
+
+    const [ finishdate1, setFinishdate1 ] = useState(new Date());
+    const [ finishdate2, setFinishdate2 ] = useState(new Date());
+    const [ finishdate3, setFinishdate3 ] = useState(new Date());
+
+    const [ data, setData] = useState({
+      nombre: '',
+      apellido: '',
+      telefonofijo: '',
+      telefonomovil: '',
+      email: '',
+      nacionalidad: '',
+      ciudad: '',
+      pais: '',
+      callenumero: '',
+      barrio: '',
+      level: '',
+      titulo: '',
+      habilidad1: '',
+      habilidad2: '',
+      habilidad3: '',
+      habilidad4: '',
+      habilidad5: '',
+      puesto1: '',
+      empresa1: '',
+      puesto2: '',
+      empresa2: '',
+      puesto3: '',
+      empresa3: ''
+    });
+
+    
+
+    const handleSexoChange = (event) => {
+      setSexo(event.target.value);
+    };
   
     const handleNext = () => {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -68,7 +99,83 @@ const Stepperview = () => {
       setActiveStep(0);
     };
 
+    const handleBirthdateChange = date => {
+      setBirthdate(date);
+    
+    };
 
+  const handleStartDate1 = date => {
+    setStartdate1(date);
+  };
+
+  const handleStartDate2 = date => {
+      setStartdate2(date);
+  };
+
+  const handleStartDate3 = date => {
+      setStartdate3(date);
+  };
+
+  const handleFinishDate1 = date => {
+      setFinishdate1(date);
+  };
+
+  const handleFinishDate2 = date => {
+      setFinishdate2(date);
+  };
+
+  const handleFinishDate3 = date => {
+      setFinishdate3(date);
+  };
+
+    const handleDataChange = (event) => {
+      event.preventDefault();
+      setData({
+          ...data,
+          [event.target.name]: event.target.value
+      });
+  };
+
+  const test = () => {
+    console.log('test');
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  }
+  
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <RDTrabaja/>;
+      case 1:
+        return <PersonalForm 
+                  handleDataChange={handleDataChange}
+                  data={data}
+                  handleSexoChange={handleSexoChange}
+                  sexo={sexo}
+                  handleBirthdateChange={handleBirthdateChange}
+                  birthdate={birthdate}
+              />;
+      case 2:
+        return <JobForm
+                  handleDataChange={handleDataChange}
+                  data={data}
+                  startdate1={startdate1}
+                  startdate2={startdate2}
+                  startdate3={startdate3}
+                  finishdate1={finishdate1}
+                  finishdate2={finishdate2}
+                  finishdate3={finishdate3}
+                  handleStartDate1={handleStartDate1}
+                  handleStartDate2={handleStartDate2}
+                  handleStartDate3={handleStartDate3}
+                  handleFinishDate1={handleFinishDate1}
+                  handleFinishDate2={handleFinishDate2}
+                  handleFinishDate3={handleFinishDate3}
+                />;
+      default:
+        return 'Unknown step';
+    }
+  }
+console.log(data);
     return ( 
       <Container>
         <div className={classes.root}>
@@ -86,15 +193,28 @@ const Stepperview = () => {
                         className={classes.button}
                         >
                         Atras
+                        </Button> 
+                        
+                        {activeStep === steps.length - 1 ? 
+                        <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={test}
+                        className={classes.button}
+                        >
+                        Enviar
                         </Button>
+                        : 
+                        
                         <Button
                         variant="contained"
                         color="primary"
                         onClick={handleNext}
                         className={classes.button}
                         >
-                        {activeStep === steps.length - 1 ? 'Finish' : 'Siguiente'}
-                        </Button>
+                        Siguiente
+                        </Button>}
+
                     </div>
                     </div>
                 </StepContent>
