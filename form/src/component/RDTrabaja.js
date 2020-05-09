@@ -59,38 +59,48 @@ const RDTrabaja = () => {
                     />
                 </Container>
                 <Container>
-                    <Typography variant="body1" className={classes.text}>
+                    <Typography component={'span'} variant="body1" className={classes.text}>
                         ●	En <b>RDTrabaja</b> somos un grupo de profesionales del área de administración, economía y programación localizados en la <b>República Dominicana</b> que queremos ayudarte a tener tranquilidad y seguridad en <b>el ámbito laboral.</b> Entendiendo que el futuro ha cambiado por la pandemia del COVID-19, queremos ayudarte a tener opciones de trabajo para el futuro, si quieres ser parte de nuestra red y que te mandemos <b>opciones laborales</b>, regístrate aquí.
                     </Typography>
                 </Container>
             </Paper>
             <Paper elevation={7}>
-                <Container>
-                    <Typography variant="h4" className={classes.title}>
-                        MISIÓN
-                    </Typography>
-                    <Typography variant="body1" className={classes.text}>
+                <Container> 
+                    <br/>
+                    <Typography component={'span'} variant="h4" className={classes.title}>
+                        MISIÓN 
+                    </Typography> 
+                    <br/> <br/>
+                    <Typography component={'span'} variant="body1" className={classes.text}>
                         ● Somos una <b>empresa de gestión</b> que buscamos conectar las personas que buscan trabajos con empresas que están necesitando personal nuevo y calificado. Dando a todos nuestros clientes una alta <b>calidad de servicio</b> y <b>seguridad</b> en el mercado nacional de la <b>República Dominicana.</b>                    
-                    </Typography>
-                    <Typography variant="h4" className={classes.title}>
+                    </Typography> 
+                    <br/> <br/>
+                    <Typography component={'span'} variant="h4" className={classes.title}>
                         VISIÓN
-                    </Typography>
-                    <Typography variant="body1" className={classes.text}>
-                        ●	¡Ayudar a más de <b>100,000</b> personas a conseguir trabajo y tener la <b>Mayor Base de Datos</b> laborales de la <b>República Dominicana.</b> 
+                    </Typography> 
+                    <br/> <br/>
+                    <Typography component={'span'} variant="body1" className={classes.text}>
+                        ●	¡Ayudar a más de <b>100,000</b> personas a conseguir trabajo y tener la <b>Mayor Base de Datos</b> laborales de la <b>República Dominicana!</b> 
                     </Typography>
                 </Container>
             </Paper>
             <Paper elevation={22}>
-                <Container>
-                    <Typography variant="h4" className={classes.title}>
+                <Container> 
+                    <br/>
+                    <Typography component={'span'} variant="h4" className={classes.title}>
                         VALORES
-                    </Typography>
-                    <Typography variant="h6" className={classes.text}>
-                        1.	Compromiso y Responsabilidad <br/>
-                        2.	Seguridad <br/>
-                        3.	Calidad <br/>
-                        4.	Profesionalidad <br/>
-                        5.	Trabajo en equipo <br/>
+                    </Typography> 
+                    <br/> <br/>
+                    <Typography component={'span'} variant="h6" className={classes.text}>
+                        1.	Compromiso y Responsabilidad 
+                        <br/>
+                        2.	Seguridad 
+                        <br/>
+                        3.	Calidad 
+                        <br/>
+                        4.	Profesionalidad 
+                        <br/>
+                        5.	Trabajo en equipo 
                     </Typography>
                 </Container>
             </Paper>

@@ -6,12 +6,9 @@ import Stepperview from './component/Stepperview';
 function App() {
   return (
     <>
- 
-     
-        <Nav/>
-      <Stepperview/>
 
-      
+      <Nav/>
+      <Stepperview/>
  
     </>
   );

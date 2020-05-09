@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {sendData} from '../service/form.service';
 import PersonalForm from './PersonalForm';
 import JobForm from './JobForm';
 import RDTrabaja from './RDTrabaja';
@@ -81,6 +82,7 @@ const Stepperview = () => {
       empresa3: ''
     });
 
+
     
 
     const handleSexoChange = (event) => {
@@ -136,8 +138,32 @@ const Stepperview = () => {
       });
   };
 
-  const test = () => {
-    console.log('test');
+  const test = async (e) => {
+    e.preventDefault();
+
+    
+    try {
+
+      const dat = await sendData({
+        ...data,
+        birthdate: birthdate,
+        sexo: sexo,
+        startdate1: startdate1,
+        startdate2: startdate2,
+        startdate3: startdate3,
+        finishdate1: finishdate1,
+        finishdate2: finishdate2,
+        finishdate3: finishdate3
+      })
+
+      console.log(dat);
+      window.alert("the message was successfully sent")
+
+    } catch (error) {
+        
+        console.log(error);
+    }
+
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   }
   
@@ -175,7 +201,7 @@ const Stepperview = () => {
         return 'Unknown step';
     }
   }
-console.log(data);
+
     return ( 
       <Container>
         <div className={classes.root}>
@@ -184,7 +210,7 @@ console.log(data);
                 <Step key={label}>
                 <StepLabel>{label}</StepLabel>
                 <StepContent>
-                    <Typography>{getStepContent(index)}</Typography>
+                    <Typography component={'span'} >{getStepContent(index)}</Typography>
                     <div className={classes.actionsContainer}>
                     <div>
                         <Button
@@ -223,7 +249,7 @@ console.log(data);
             </Stepper>
             {activeStep === steps.length && (
             <Paper square elevation={0} className={classes.resetContainer}>
-                <Typography>All steps completed - you&apos;re finished</Typography>
+                <Typography >All steps completed - you&apos;re finished</Typography>
                 <Button onClick={handleReset} className={classes.button}>
                 Reset
                 </Button>
