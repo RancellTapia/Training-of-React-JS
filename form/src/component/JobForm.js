@@ -68,66 +68,11 @@ const JobForm = ({ handleDataChange,
                     handleStartDate3,
                     handleFinishDate1,
                     handleFinishDate2,
-                    handleFinishDate3
+                    handleFinishDate3,
+                    handleLevelChange,
+                    level
                  }) => {
     const classes = useStyles();
-
-    // const [ startdate1, setStartdate1 ] = useState(new Date());
-    // const [ startdate2, setStartdate2 ] = useState(new Date());
-    // const [ startdate3, setStartdate3 ] = useState(new Date());
-
-    // const [ finishdate1, setFinishdate1 ] = useState(new Date());
-    // const [ finishdate2, setFinishdate2 ] = useState(new Date());
-    // const [ finishdate3, setFinishdate3 ] = useState(new Date());
-
-    // const [ jobInfo, setJobInfo ] = useState({
-    //     level: '',
-    //     titulo: '',
-    //     habilidad1: '',
-    //     habilidad2: '',
-    //     habilidad3: '',
-    //     habilidad4: '',
-    //     habilidad5: '',
-    //     puesto1: '',
-    //     empresa1: '',
-    //     puesto2: '',
-    //     empresa2: '',
-    //     puesto3: '',
-    //     empresa3: ''
-
-    // });
-  
-    // const handleStartDate1 = date => {
-    //     setStartdate1(date);
-    // };
-
-    // const handleStartDate2 = date => {
-    //     setStartdate2(date);
-    // };
-
-    // const handleStartDate3 = date => {
-    //     setStartdate3(date);
-    // };
-
-    // const handleFinishDate1 = date => {
-    //     setFinishdate1(date);
-    // };
-
-    // const handleFinishDate2 = date => {
-    //     setFinishdate2(date);
-    // };
-
-    // const handleFinishDate3 = date => {
-    //     setFinishdate3(date);
-    // };
-
-    // const handleChangeJobInfo = (event) => {
-    //     event.preventDefault();
-    //     setJobInfo({
-    //         ...jobInfo,
-    //         [event.target.name]: event.target.value
-    //     });
-    // };
   
     return ( 
 
@@ -135,8 +80,8 @@ const JobForm = ({ handleDataChange,
             <div className={classes.root}>
                 <Grid container spacing={4}>
                     <Grid item xs>
-                        <label className={classes.title}>Datos Laborales</label>
                         <Paper className={classes.paper}>
+                            <label className={classes.title}>Datos Laborales</label>
                             <Container>
 
                                 <FormControl className={classes.formControl}>
@@ -145,8 +90,8 @@ const JobForm = ({ handleDataChange,
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     name="level"
-                                    value={data.level}
-                                    onChange={handleDataChange}
+                                    value={level}
+                                    onChange={handleLevelChange}
                                     >
                                     <MenuItem value={'basico'}>Básico</MenuItem>
                                     <MenuItem value={'bachiller'}>Bachiller</MenuItem>

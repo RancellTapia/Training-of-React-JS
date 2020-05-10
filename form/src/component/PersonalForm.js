@@ -43,47 +43,20 @@ const useStyles = makeStyles((theme) => ({
 const PersonalForm = ({ handleDataChange, data, handleSexoChange, sexo, handleBirthdateChange, birthdate }) => {
     const classes = useStyles();
 
-    
-  
-
-
-    // const [ personalInfo, setPersonalInfo ] = useState({
-    //     nombre: '',
-    //     apellido: '',
-    //     telefonofijo: '',
-    //     telefonomovil: '',
-    //     email: '',
-    //     nacionalidad: '',
-    //     sexo: '',
-    //     ciudad: '',
-    //     pais: '',
-    //     callenumero: '',
-    //     barrio: ''
-
-    // });
-
-    // const handleChangePersonalInfo = (event) => {
-    //     event.preventDefault();
-    //     setPersonalInfo({
-    //         ...personalInfo,
-    //         [event.target.name]: event.target.value
-    //     });
-    // };
-
     return ( 
 
         <Container>
             <div className={classes.root}>
                 <Grid container spacing={4}>
                     <Grid item xs>
-                        <label className={classes.title}>Datos Personales</label>
                         <Paper className={classes.paper}>
+                            <label className={classes.title}>Datos Personales</label>
                             <Container>
                                 <TextField id="nombre" className={classes.field} label="Nombre*" color="secondary" name="nombre" value={data.nombre} onChange={handleDataChange}/>
                                 <TextField id="apellido" className={classes.field} label="Apellido*" color="secondary" name="apellido" value={data.apellido} onChange={handleDataChange}/>
                                 <TextField id="telefono-fijo" className={classes.field} label="Teléfono fijo" color="secondary" name="telefonofijo" value={data.telefonofijo} onChange={handleDataChange} />
                                 <TextField id="telefono-movil" className={classes.field} label="Teléfono Movil*" color="secondary" name="telefonomovil" value={data.telefonomovil} onChange={handleDataChange}/>
-                                <TextField id="email" className={classes.field} label="Email*" color="secondary" name="email" value={data.email} onChange={handleDataChange}/>
+                                <TextField id="email" className={classes.field} label="Email*" type="email" color="secondary" name="email" value={data.email} onChange={handleDataChange}/>
                                 
                                 <hr/>
 

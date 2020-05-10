@@ -50,7 +50,7 @@ const RDTrabaja = () => {
     
         <Grid container justify="center" spacing={2} className={classes.card}>
         
-            <Paper elevation={2}>
+            <Paper elevation={22}>
                 <Container>
                     <CardMedia
                     className={classes.media}
@@ -64,7 +64,7 @@ const RDTrabaja = () => {
                     </Typography>
                 </Container>
             </Paper>
-            <Paper elevation={7}>
+            <Paper elevation={22}>
                 <Container> 
                     <br/>
                     <Typography component={'span'} variant="h4" className={classes.title}>
