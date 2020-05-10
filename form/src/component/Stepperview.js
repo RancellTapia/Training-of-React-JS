@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     marginTop: 90,
+  
+  },
+  opa: {
+    width: '100%',
+    backgroundColor: 'transparent',
   },
   button: {
     marginTop: theme.spacing(1),
@@ -30,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   resetContainer: {
     padding: theme.spacing(3),
+    opacity: 0.9,
   },
 }));
 
@@ -43,10 +49,10 @@ function getSteps() {
 const Stepperview = () => {
 
     const classes = useStyles();
-    const [activeStep, setActiveStep] = useState(0);
     const steps = getSteps();
-    const [sexo, setSexo] = useState('');
-    const [birthdate, setBirthdate] = useState(new Date());
+    const [ activeStep, setActiveStep ] = useState(0);
+    const [ sexo, setSexo ] = useState('');
+    const [ birthdate, setBirthdate ] = useState(new Date());
 
     const [ startdate1, setStartdate1 ] = useState(new Date());
     const [ startdate2, setStartdate2 ] = useState(new Date());
@@ -55,6 +61,10 @@ const Stepperview = () => {
     const [ finishdate1, setFinishdate1 ] = useState(new Date());
     const [ finishdate2, setFinishdate2 ] = useState(new Date());
     const [ finishdate3, setFinishdate3 ] = useState(new Date());
+
+    const [ level, setLevel] = useState('');
+
+    const nivel = level;
 
     const [ data, setData] = useState({
       nombre: '',
@@ -67,7 +77,6 @@ const Stepperview = () => {
       pais: '',
       callenumero: '',
       barrio: '',
-      level: '',
       titulo: '',
       habilidad1: '',
       habilidad2: '',
@@ -130,6 +139,10 @@ const Stepperview = () => {
       setFinishdate3(date);
   };
 
+  const handleLevelChange = event => {
+    setLevel(event.target.value);
+};
+
     const handleDataChange = (event) => {
       event.preventDefault();
       setData({
@@ -144,7 +157,7 @@ const Stepperview = () => {
     
     try {
 
-      const dat = await sendData({
+      await sendData({
         ...data,
         birthdate: birthdate,
         sexo: sexo,
@@ -153,15 +166,15 @@ const Stepperview = () => {
         startdate3: startdate3,
         finishdate1: finishdate1,
         finishdate2: finishdate2,
-        finishdate3: finishdate3
+        finishdate3: finishdate3,
+        nivel: nivel
       })
 
-      console.log(dat);
-      window.alert("the message was successfully sent")
+      window.alert("Los datos se han enviado!")
 
     } catch (error) {
-        
         console.log(error);
+        window.alert("Error al enviar los datos.")
     }
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -196,6 +209,8 @@ const Stepperview = () => {
                   handleFinishDate1={handleFinishDate1}
                   handleFinishDate2={handleFinishDate2}
                   handleFinishDate3={handleFinishDate3}
+                  handleLevelChange={handleLevelChange}
+                  level={level}
                 />;
       default:
         return 'Unknown step';
@@ -204,8 +219,8 @@ const Stepperview = () => {
 
     return ( 
       <Container>
-        <div className={classes.root}>
-            <Stepper activeStep={activeStep} orientation="vertical">
+        <div >
+            <Stepper activeStep={activeStep} orientation="vertical" className={classes.opa}>
             {steps.map((label, index) => (
                 <Step key={label}>
                 <StepLabel>{label}</StepLabel>
@@ -215,6 +230,8 @@ const Stepperview = () => {
                     <div>
                         <Button
                         disabled={activeStep === 0}
+                        variant="contained"
+                        color="primary"
                         onClick={handleBack}
                         className={classes.button}
                         >
@@ -249,9 +266,9 @@ const Stepperview = () => {
             </Stepper>
             {activeStep === steps.length && (
             <Paper square elevation={0} className={classes.resetContainer}>
-                <Typography >All steps completed - you&apos;re finished</Typography>
+                <Typography >Usted ha completado todos los pasos!</Typography>
                 <Button onClick={handleReset} className={classes.button}>
-                Reset
+                Resetear
                 </Button>
             </Paper>
             )}

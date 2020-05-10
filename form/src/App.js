@@ -1,16 +1,27 @@
 import React from 'react';
-import Nav from './component/Nav';
 import Stepperview from './component/Stepperview';
+import image from './image/room.jpg';
+import './App.css';
+import Paper from '@material-ui/core/Paper';
 
+
+const styles = {
+  paperContainer: {
+      height: 960,
+      margin: -24,
+      padding: 24,
+      backgroundImage: `url(${image})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      width: `calc(98vw + 48px)`,
+  }
+};
 
 function App() {
   return (
-    <>
-
-      <Nav/>
+    <Paper style={styles.paperContainer}>
       <Stepperview/>
- 
-    </>
+    </Paper>  
   );
 }
 
