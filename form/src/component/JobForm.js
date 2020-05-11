@@ -55,23 +55,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const JobForm = ({ handleDataChange, 
-                    data,
-                    startdate1,
-                    startdate2,
-                    startdate3,
-                    finishdate1,
-                    finishdate2,
-                    finishdate3,
-                    handleStartDate1,
-                    handleStartDate2,
-                    handleStartDate3,
-                    handleFinishDate1,
-                    handleFinishDate2,
-                    handleFinishDate3,
-                    handleLevelChange,
-                    level
-                 }) => {
+const JobForm = ( props ) => {
     const classes = useStyles();
   
     return ( 
@@ -90,8 +74,8 @@ const JobForm = ({ handleDataChange,
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     name="level"
-                                    value={level}
-                                    onChange={handleLevelChange}
+                                    value={props.level}
+                                    onChange={props.handleLevelChange}
                                     >
                                     <MenuItem value={'basico'}>Básico</MenuItem>
                                     <MenuItem value={'bachiller'}>Bachiller</MenuItem>
@@ -102,18 +86,18 @@ const JobForm = ({ handleDataChange,
                                     </Select>
                                 </FormControl>
 
-                                <TextField id="titulo" className={classes.field} label="Título" color="secondary" name="titulo" value={data.titulo} onChange={handleDataChange}/>
+                                <TextField id="titulo" className={classes.field} label="Título" color="secondary" name="titulo" value={props.titulo} onChange={props.handleDataChange}/>
                                 <br/>
-                                <TextField id="habilidad1" className={classes.field} label="Habilidad 1" color="secondary" name="habilidad1" value={data.habilidad1} onChange={handleDataChange}/>
-                                <TextField id="habilidad2" className={classes.field} label="Habilidad 2" color="secondary" name="habilidad2" value={data.habilidad2} onChange={handleDataChange}/>
-                                <TextField id="habilidad3" className={classes.field} label="Habilidad 3" color="secondary" name="habilidad3" value={data.habilidad3} onChange={handleDataChange}/>
-                                <TextField id="habilidad4" className={classes.field} label="Habilidad 4" color="secondary" name="habilidad4" value={data.habilidad4} onChange={handleDataChange}/>
-                                <TextField id="habilidad5" className={classes.field} label="Habilidad 5" color="secondary" name="habilidad5" value={data.habilidad5} onChange={handleDataChange}/>
+                                <TextField id="habilidad1" className={classes.field} label="Habilidad 1" color="secondary" name="habilidad1" value={props.habilidad1} onChange={props.handleDataChange}/>
+                                <TextField id="habilidad2" className={classes.field} label="Habilidad 2" color="secondary" name="habilidad2" value={props.habilidad2} onChange={props.handleDataChange}/>
+                                <TextField id="habilidad3" className={classes.field} label="Habilidad 3" color="secondary" name="habilidad3" value={props.habilidad3} onChange={props.handleDataChange}/>
+                                <TextField id="habilidad4" className={classes.field} label="Habilidad 4" color="secondary" name="habilidad4" value={props.habilidad4} onChange={props.handleDataChange}/>
+                                <TextField id="habilidad5" className={classes.field} label="Habilidad 5" color="secondary" name="habilidad5" value={props.habilidad5} onChange={props.handleDataChange}/>
 
                                 <hr/>
 
-                                <TextField id="puesto1" className={classes.field} label="Puesto 1" color="secondary" name="puesto1" value={data.puesto1} onChange={handleDataChange}/>
-                                <TextField id="empresa1" className={classes.field} label="Empresa" color="secondary" name="empresa1" value={data.empresa1} onChange={handleDataChange}/>
+                                <TextField id="puesto1" className={classes.field} label="Puesto 1" color="secondary" name="puesto1" value={props.puesto1} onChange={props.handleDataChange}/>
+                                <TextField id="empresa1" className={classes.field} label="Empresa" color="secondary" name="empresa1" value={props.empresa1} onChange={props.handleDataChange}/>
 
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                         <KeyboardDatePicker
@@ -122,8 +106,8 @@ const JobForm = ({ handleDataChange,
                                         id="startdate1"
                                         label="Fecha de inicio"
                                         format="MM/dd/yyyy"
-                                        value={startdate1}
-                                        onChange={handleStartDate1}
+                                        value={props.startdate1}
+                                        onChange={props.handleStartDate1}
                                         KeyboardButtonProps={{
                                             'aria-label': 'change date',
                                         }}
@@ -137,8 +121,8 @@ const JobForm = ({ handleDataChange,
                                         id="finishdate1"
                                         label="Fecha de finalización"
                                         format="MM/dd/yyyy"
-                                        value={finishdate1}
-                                        onChange={handleFinishDate1}
+                                        value={props.finishdate1}
+                                        onChange={props.handleFinishDate1}
                                         KeyboardButtonProps={{
                                             'aria-label': 'change date',
                                         }}
@@ -147,8 +131,8 @@ const JobForm = ({ handleDataChange,
 
                                 <hr/>
 
-                                <TextField id="puesto2" className={classes.field} label="Puesto 2" color="secondary" name="puesto2" value={data.puesto2} onChange={handleDataChange}/>
-                                <TextField id="empresa2" className={classes.field} label="Empresa" color="secondary" name="empresa2" value={data.empresa2} onChange={handleDataChange}/>
+                                <TextField id="puesto2" className={classes.field} label="Puesto 2" color="secondary" name="puesto2" value={props.puesto2} onChange={props.handleDataChange}/>
+                                <TextField id="empresa2" className={classes.field} label="Empresa" color="secondary" name="empresa2" value={props.empresa2} onChange={props.handleDataChange}/>
 
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                         <KeyboardDatePicker
@@ -157,8 +141,8 @@ const JobForm = ({ handleDataChange,
                                         id="startdate2"
                                         label="Fecha de inicio"
                                         format="MM/dd/yyyy"
-                                        value={startdate2}
-                                        onChange={handleStartDate2}
+                                        value={props.startdate2}
+                                        onChange={props.handleStartDate2}
                                         KeyboardButtonProps={{
                                             'aria-label': 'change date',
                                         }}
@@ -172,8 +156,8 @@ const JobForm = ({ handleDataChange,
                                         id="finishdate2"
                                         label="Fecha de finalización"
                                         format="MM/dd/yyyy"
-                                        value={finishdate2}
-                                        onChange={handleFinishDate2}
+                                        value={props.finishdate2}
+                                        onChange={props.handleFinishDate2}
                                         KeyboardButtonProps={{
                                             'aria-label': 'change date',
                                         }}
@@ -182,8 +166,8 @@ const JobForm = ({ handleDataChange,
 
                                 <hr/>
 
-                                <TextField id="puesto3" className={classes.field} label="Puesto 3" color="secondary" name="puesto3" value={data.puesto3} onChange={handleDataChange}/>
-                                <TextField id="empresa3" className={classes.field} label="Empresa" color="secondary" name="empresa3" value={data.empresa3} onChange={handleDataChange}/>
+                                <TextField id="puesto3" className={classes.field} label="Puesto 3" color="secondary" name="puesto3" value={props.puesto3} onChange={props.handleDataChange}/>
+                                <TextField id="empresa3" className={classes.field} label="Empresa" color="secondary" name="empresa3" value={props.empresa3} onChange={props.handleDataChange}/>
 
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                         <KeyboardDatePicker
@@ -192,8 +176,8 @@ const JobForm = ({ handleDataChange,
                                         id="startdate3"
                                         label="Fecha de inicio"
                                         format="MM/dd/yyyy"
-                                        value={startdate3}
-                                        onChange={handleStartDate3}
+                                        value={props.startdate3}
+                                        onChange={props.handleStartDate3}
                                         KeyboardButtonProps={{
                                             'aria-label': 'change date',
                                         }}
@@ -207,8 +191,8 @@ const JobForm = ({ handleDataChange,
                                         id="finishdate3"
                                         label="Fecha de finalización"
                                         format="MM/dd/yyyy"
-                                        value={finishdate3}
-                                        onChange={handleFinishDate3}
+                                        value={props.finishdate3}
+                                        onChange={props.handleFinishDate3}
                                         KeyboardButtonProps={{
                                             'aria-label': 'change date',
                                         }}
