@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(1),
     marginRight: theme.spacing(1),
-    
+    fontSize: 20,
   },
   actionsContainer: {
     marginBottom: theme.spacing(2),
@@ -255,7 +255,8 @@ const Stepperview = () => {
                         onClick={handleNext}
                         className={classes.button}
                         >
-                        Siguiente
+                          {activeStep === 0 ? "Empieza tu búsqueda aquí" : "Siguiente" }
+                        
                         </Button>}
 
                     </div>

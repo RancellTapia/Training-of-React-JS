@@ -7,13 +7,13 @@ import Paper from '@material-ui/core/Paper';
 
 const styles = {
   paperContainer: {
-      height: 960,
+      minHeight: 960,
       margin: -24,
       padding: 24,
       backgroundImage: `url(${image})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      width: `calc(98vw + 48px)`,
+      maxWidth: `calc(98vw + 48px)`,
   }
 };
 
