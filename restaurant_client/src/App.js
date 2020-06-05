@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router';
+
+import Ordenes from './components/paginas/Ordenes';
+import Menu from './components/paginas/Menu';
+import NuevoPlatillo from './components/paginas/NuevoPlatillo';
+import Sidebar from './components/ui/Sidebar';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<Sidebar />
+			<Routes>
+				<Route path='/' element={<Ordenes />} />
+				<Route path='/menu' element={<Menu />} />
+				<Route path='/nuevoplatillo' element={<NuevoPlatillo />} />
+			</Routes>
+		</>
+	);
 }
 
 export default App;
